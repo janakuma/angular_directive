@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+  <head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>angular_directive</title>
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:css styles/main.css -->
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+
+	<!-- build:js scripts/vendor/modernizr.js -->
+	<script src="/bower_components/modernizr/modernizr.js"></script>
+	<!-- endbuild -->
+  </head>
+
+  <body ng-app="todoApp" ng-controller="ToDoCtrl">
+  	<style>
+  		body {color: #000;}
+  		section {width: 340px; margin: 0 auto; border: 1px solid #000;}
+  		section .page-header * {vertical-align: middle;}
+  		section .page-header {margin-bottom: 10px; padding: 10px 0; border-bottom: 1px solid #000; text-align: center;}
+  		section h1 {display: inline-block; padding: 10px 0; font-size: 20px; text-align: center;}
+  		section .label {display: inline-block; background-color: gold; border-radius: 5px; width: 40px; line-height: 40px; text-align: center;}
+  		table {width: 100%;}
+  		table tr:nth-child(odd) td {background-color: #eaeaea;}
+  		table th {line-height: 30px;}
+  		table td {width: 50%; line-height: 30px; border-top: 1px solid #000; text-align: center; }
+  	</style>
+
+
+	<section>
+		<div class="page-header">
+			<h1>{{todo.user}}'S PAGE TO DO LIST</h1>
+			<span class="label label-default">
+				{{todo.items.length}}
+			</span>
+		</div>
+
+
+		<div class="pannel">
+			<div class="input-group">
+				<input type="text" class="form-control">
+				<span class="input-group-btn">
+					<button class="btn btn-default">ADD</button>
+				</span>
+			</div>
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Description</th>
+						<th>done</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="item in todo.items">
+						<td>{{item.action}}</td>
+						<td>{{item.done}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+	<script src="/bower_components/angular-animate/angular-animate.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js scripts/plugins.js -->
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js scripts/main.js -->
+	<script src="scripts/main.js"></script>
+	<script src="scripts/angular_directive.js"></script>
+
+	<!-- endbuild -->
+  </body>
+</html>

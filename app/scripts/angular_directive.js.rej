@@ -1,0 +1,7 @@
+diff a/app/scripts/angular_directive.js b/app/scripts/angular_directive.js	(rejected hunks)
+@@ -51,5 +51,4 @@
+ 			})
+ 		}
+ 	}
+-})
+ 	})

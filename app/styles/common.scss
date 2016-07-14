@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.clearFix:after {content: ''; display: block; clear: both; height: 0; font-size: 0;}
+
+/* LAYOUT */
+#wrapper {
+	display: flex; flex-direction: column;
+	position: relative; overflow: hidden;
+}
+#header {
+	box-sizing: border-box;
+	position: absolute; top: 0; left: 0; z-index: 10; width: 100%; height: 110px; padding: 0 0 0 184px;
+	background-color: blue;
+
+	h1.logo {
+		float: left; width: 214px; height: 74px;
+		a {display: block; height: 74px;}
+	}
+	#gnb {
+		ul {
+			li {
+				float: left;
+				a {display: block; width: 165px; height: 60px;}
+			}
+		}
+	}
+
+	.side-control {
+		position: absolute; top: 0; left: 0; z-index: 10;
+		a.btn-control-pannel {display: inline-block; width: 60px; height: 60px; margin-left: 55px;}
+	}
+}
+#container {
+	box-sizing: border-box; position: relative; height: 100vh; padding: 110px 0 134px 0;
+}
+#footer {
+	position: absolute; bottom: 0; left: 0; z-index: 10;
+	width: 100%; height: 80px; background-color: #333;
+}
+
+/* scroll-custom */
+.scroll::-webkit-scrollbar {width: 12px;}
+.scroll::-webkit-scrollbar-track-piece {background-color: #0f161a; }
+.scroll::-webkit-scrollbar-thumb:vertical {
+	height: auto; background: #566767; border: 2px solid #0f161a;
+}

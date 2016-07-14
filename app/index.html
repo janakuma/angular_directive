@@ -1,0 +1,134 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+  <head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>angular_directive</title>
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:css styles/main.css -->
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+
+	<!-- build:js scripts/vendor/modernizr.js -->
+	<script src="/bower_components/modernizr/modernizr.js"></script>
+	<!-- endbuild -->
+  </head>
+
+  <body>
+	<div id="wrapper" ng-app="myApp">
+		<!-- HEADER -->
+		<header id="header"></header>
+		<!-- //HEADER -->
+
+		<!-- CONTAINER -->
+		<div id="container" ng-controller="ctrlView">
+
+			<style>
+				.type-item {margin: 100px 0 100px 100px;}
+				.type-item:after {content: ''; display: block; clear: both; height: 0;}
+				.type-item li {float: left; margin: 0 10px;}
+
+				body { color: black; }
+
+				.control_pannel {
+					display: none; opacity: 0;
+					position: absolute; top: 50%; left: 50%; z-index: 10; margin: -300px 0 0 -300px;
+					width: 600px; height: 600px; background-color: gold;
+				}
+			</style>
+
+			<div>
+				ScaleUp : <code> {{" &lt;li ng-repeat=..>"}} </code>
+
+				<button class="copy">copy</button>
+
+				<ul class="type-item">
+					<li ng-repeat="item in [1,2,3,4,5]" ng-mouseenter="tween.scaleUp($event);" ng-mouseleave="tween.scaleDown($event)">
+						<img src="/images/magic-{{item}}.jpg" alt="">
+					</li>
+				</ul>
+			</div>
+
+
+
+
+			<input type="checkbox" ng-model="name">
+			<p ng-init="name=true">{{name}}</p>
+			<p ng-show={{name}}>보인다</p>
+
+
+			<ul class="type-item">
+				ScaleUp : <code> ... </code>
+				<li ng-repeat="item in [1,2,3,4,5]" ng-mouseenter="tween.rotateUp($event);" ng-mouseleave="tween.rotateDown($event)">
+					<img src="/images/magic-{{item}}.jpg" alt="">
+				</li>
+			</ul>
+
+			<ul class="type-item">
+				<li ng-repeat="item in [1,2,3,4,5]" ng-mouseenter="tween.rotateYUp($event);" ng-mouseleave="tween.rotateYDown($event)">
+					<img src="/images/magic-{{item}}.jpg" alt="">
+				</li>
+			</ul>
+
+			<button ng-click="tween.scaleShow('#control_pannel')">scaleShow</button>
+
+
+			<article id="control_pannel" ng-click="tween.scaleHide('#control_pannel');" class="control_pannel">
+			<button ng-click="tween.scaleHide('#control_pannel')">scaleHide</button>
+		</article>
+
+
+		</div>
+		<!-- //CONTAINER -->
+
+		<!-- FOOTER -->
+		<footer id="footer"></footer>
+		<!-- //FOOTER -->
+
+
+
+	</div>
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+	<script src="/bower_components/angular-animate/angular-animate.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js scripts/plugins.js -->
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js scripts/main.js -->
+	<script src="scripts/main.js"></script>
+	<script src="scripts/angular_directive.js"></script>
+
+	<!-- endbuild -->
+  </body>
+</html>
