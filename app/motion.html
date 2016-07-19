@@ -18,62 +18,18 @@
 	<!-- build:css styles/main.css -->
 	<link rel="stylesheet" href="styles/common.css">
 	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/list.css">
+	<link rel="stylesheet" href="styles/list-items.css">
 	<!-- endbuild -->
 
 	<!-- build:js scripts/vendor/modernizr.js -->
 	<script src="/bower_components/modernizr/modernizr.js"></script>
 	<!-- endbuild -->
+
   </head>
 
-  <body ng-app="todoApp" ng-controller="ToDoCtrl">
-  	<style>
-  		body {color: #000;}
-  		section {width: 340px; margin: 0 auto; border: 1px solid #000;}
-  		section .page-header * {vertical-align: middle;}
-  		section .page-header {margin-bottom: 10px; padding: 10px 0; border-bottom: 1px solid #000; text-align: center;}
-  		section h1 {display: inline-block; padding: 10px 0; font-size: 20px; text-align: center;}
-  		section .label {display: inline-block; background-color: gold; border-radius: 5px; width: 40px; line-height: 40px; text-align: center;}
-  		table {width: 100%;}
-  		table tr:nth-child(odd) td {background-color: #eaeaea;}
-  		table th {line-height: 30px;}
-  		table td {width: 50%; line-height: 30px; border-top: 1px solid #000; text-align: center; }
-  	</style>
+  <body>
 
-
-	<section>
-		<div class="page-header">
-			<h1>{{todo.user}}'S PAGE TO DO LIST</h1>
-			<span class="label label-default">
-				{{todo.items.length}}
-			</span>
-		</div>
-
-
-		<div class="pannel">
-			<div class="input-group">
-				<input type="text" class="form-control">
-				<span class="input-group-btn">
-					<button class="btn btn-default">ADD</button>
-				</span>
-			</div>
-
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Description</th>
-						<th>done</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr ng-repeat="item in todo.items">
-						<td>{{item.action}}</td>
-						<td>{{item.done}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</section>
 
 	<!-- build:js scripts/vendor.js -->
 	<!-- bower:js -->
@@ -104,6 +60,71 @@
 	<!-- build:js scripts/main.js -->
 	<script src="scripts/main.js"></script>
 	<script src="scripts/angular_directive.js"></script>
+
+	<ul class="nav">
+	 	<li>Character</li>
+	 	<li>Weapons</li>
+	 	<li>Battle Map</li>
+	 	<li>Item</li>
+	 	<li>User Rank</li>
+	 </ul>
+
+  	<span class="group-btn">
+  		<button class="btn play">play</button>
+  		<button class="btn pause">pause</button>
+  		<button class="btn reverse">reverse</button>
+  		<button class="btn restart">restart</button>
+  		<button class="btn resume">resume</button>
+  		<button class="btn seek">seek</button>
+  		<button class="btn kill">kill</button>
+  	</span>
+
+	<script>
+  		$(function() {
+			//create a timeline that calls myFunction() when it completes
+
+
+			var element = '.box1';
+			var tl = new TimelineMax();
+
+			tl.set('.box2', {opacity: 0})
+			tl.to(element, 1, {left:100, opacity:0.5});
+			tl.to(element, 1, {top:500, opacity:1});
+			tl.add( TweenMax.staggerTo('.box2', 0.6, {opacity: '1', marginLeft: '+=100'}, 0.2));
+
+			var test = new TimelineLite({});
+
+			test.staggerFrom($('.nav li'), 0.6, {
+				x: -600, opacity: '0', ease: Back.easeOut.config(5) ,onComplete: aa(this)
+			}, 0.1)
+
+			function aa(a) {
+				console.log(a)
+
+			}
+
+			$('.play').on('click', function() {
+				test.play();
+			});
+
+			$('.reverse').on('click', function() {
+				test.reverse();
+			});
+		})
+  	</script>
+
+
+	<style>
+		img {width: auto; height: 100px;}
+
+		.nav {height: 100vh; overflow: hidden;}
+
+		.nav li {height: 20%; background-color: #333; line-height: 20vh; font-size: 80px; padding: 0 0 0 70px;}
+		.nav li:nth-of-type(even) {background-color: #666;}
+		.group-btn {position: absolute; bottom: 20px; right: 20px;}
+		.btn {padding: 5px 20px; border: 2px solid #000; background-color: gold; font-size: 14px; font-weight: bold; text-transform: uppercase;}
+
+	</style>
 
 	<!-- endbuild -->
   </body>

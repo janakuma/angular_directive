@@ -1,0 +1,142 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+  <head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>angular_directive</title>
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:css styles/main.css -->
+	<link rel="stylesheet" href="styles/common.css">
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/list.css">
+	<link rel="stylesheet" href="styles/list-items.css">
+	<!-- endbuild -->
+
+	<!-- build:js scripts/vendor/modernizr.js -->
+	<script src="/bower_components/modernizr/modernizr.js"></script>
+	<!-- endbuild -->
+
+  </head>
+
+  <body ng-app="valueExample">
+
+
+
+
+
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+	<script src="/bower_components/angular-animate/angular-animate.js"></script>
+	<script src="/bower_components/jqlite/jqlite.1.1.1.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js scripts/plugins.js -->
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+	<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js scripts/main.js -->
+
+
+	<style>
+		body {color: #000;}
+		form {text-align: center; line-height: 60px; border-top: 1px solid #000; padding: 50px 0;}
+	</style>
+
+	<script>
+	angular.module('valueExample', [])
+	.controller('ExampleController', ['$scope', function($scope) {
+		$scope.names = ['pizza', 'unicorns', 'robots'];
+		$scope.my = { favorite: 'unicorns' }; //라디오 버튼의 기본값 설정
+	}])
+
+	.controller('ExampleController1', ['$scope', function($scope) {
+		$scope.names = ['주먹', '가위', '보'];
+		$scope.favorite = {aa:'가위'};
+	}])
+
+	.controller('ExampleController2', ['$scope', function($scope) {
+		$scope.names = ['주먹', '가위', '보'];
+		$scope.favorite = {aa:'주먹'};
+	}]);
+	</script>
+
+	<pre>
+	.controller('ExampleController2', ['$scope', function($scope) {
+		$scope.names = ['주먹', '가위', '보']; //ng
+
+		//라디오 버튼의 기본값 설정
+		//json 형식으로 널어줘야만 한다.
+		//ng-model에 넣어야 하며, ng-model="favorite.aa"와 같이 넣어준다.
+		$scope.favorite = {aa:'주먹'};
+
+		//ng-if와 같이 사용할 때는 아래와 같이 ng-value의 값을 이용한다.
+		&lt;p ng-if="'주먹' == favorite.aa"&gt;Cnt: 주먹&lt;/p&gt;
+		&lt;p ng-if="'가위' == favorite.aa"&gt;Cnt: 가위&lt;/p&gt;
+		&lt;p ng-if="'보' == favorite.aa"&gt;Cnt: 보&lt;/p&gt;
+
+	}]);
+	</pre>
+
+	<form ng-controller="ExampleController">
+		<h2>Which is your favorite?</h2>
+			<label ng-repeat="name in names" for="{{name}}">{{name}}
+				<input type="radio" ng-model="my.favorite" ng-value="name" id="{{name}}" name="favorite">
+			</label>
+		<div>You chose {{my.favorite}}</div>
+	</form>
+
+
+	<form ng-controller="ExampleController1">
+		<h2>Which is your favorite?</h2>
+			<label ng-repeat="name in names" for="{{name}}">{{name}}
+				<input type="radio" ng-model="favorite.aa" ng-value="name" id="{{name}}" name="favorite">
+			</label>
+		<div>You chose {{favorite.aa}}</div>
+
+		<!-- ng-repeat으로 ng-if 비교 하였을때 -->
+		<p ng-if="list == favorite.aa" ng-repeat="list in names">Cnt: {{list}}</p>
+	</form>
+
+	<form ng-controller="ExampleController2">
+		<h2>Which is your favorite?</h2>
+			<label ng-repeat="name in names" for="{{name}}">{{name}}
+				<input type="radio" ng-model="favorite.aa" ng-value="name" id="{{name}}" name="favorite">
+			</label>
+		<div>You chose {{favorite.aa}}</div>
+
+		<!-- ng-if에 원하는 값을 개별적으로 입력하여 비교 하였을때 -->
+		<p ng-if="'주먹' == favorite.aa">Cnt: 주먹</p>
+		<p ng-if="'가위' == favorite.aa">Cnt: 가위</p>
+		<p ng-if="'보' == favorite.aa">Cnt: 보</p>
+	</form>
+
+
+  </body>
+</html>

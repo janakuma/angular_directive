@@ -18,35 +18,42 @@
 	<!-- build:css styles/main.css -->
 	<link rel="stylesheet" href="styles/common.css">
 	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/list.css">
+	<link rel="stylesheet" href="styles/list-items.css">
 	<!-- endbuild -->
 
 	<!-- build:js scripts/vendor/modernizr.js -->
 	<script src="/bower_components/modernizr/modernizr.js"></script>
 	<!-- endbuild -->
+
+	<style>
+		.type-item {margin: 100px 0 100px 100px;}
+		.type-item:after {content: ''; display: block; clear: both; height: 0;}
+		.type-item li {float: left; margin: 0 10px;}
+
+		body { color: black; }
+
+		.control_pannel {
+			display: none; opacity: 0;
+			position: absolute; top: 50%; left: 50%; z-index: 10; margin: -300px 0 0 -300px;
+			width: 600px; height: 600px; background-color: gold;
+		}
+	</style>
+
   </head>
 
-  <body>
-	<div id="wrapper" ng-app="myApp">
+  <body ng-app="myApp" ng-controller="ctrlView" >
+
+
+
+	<div id="wrapper" style="display: none;">
+
 		<!-- HEADER -->
 		<header id="header"></header>
 		<!-- //HEADER -->
 
 		<!-- CONTAINER -->
-		<div id="container" ng-controller="ctrlView">
-
-			<style>
-				.type-item {margin: 100px 0 100px 100px;}
-				.type-item:after {content: ''; display: block; clear: both; height: 0;}
-				.type-item li {float: left; margin: 0 10px;}
-
-				body { color: black; }
-
-				.control_pannel {
-					display: none; opacity: 0;
-					position: absolute; top: 50%; left: 50%; z-index: 10; margin: -300px 0 0 -300px;
-					width: 600px; height: 600px; background-color: gold;
-				}
-			</style>
+		<div id="container">
 
 			<div>
 				ScaleUp : <code> {{" &lt;li ng-repeat=..>"}} </code>
@@ -59,9 +66,6 @@
 					</li>
 				</ul>
 			</div>
-
-
-
 
 			<input type="checkbox" ng-model="name">
 			<p ng-init="name=true">{{name}}</p>
@@ -96,9 +100,81 @@
 		<footer id="footer"></footer>
 		<!-- //FOOTER -->
 
-
-
 	</div>
+
+	<section class="list">
+		<playlist item-list="playList_info" effect-name="'pop-in'"></playlist>
+	</section>
+
+	<section class="list" style="display: none;">
+		<ul class="effeckt-list" data-effeckt-type="pop-in">
+			<li>
+				<div class="inner">
+					<dl>
+						<dt>
+							<figure class="thum">
+								<img src="images/thum-game-00.jpg" alt="">
+							</figure>
+						</dt>
+						<dd>
+							<h3>The International 2016</h3>
+							<p>누가 승자의 자리를 차지할까요? 세계 최고의 팀들이  The International 에서 펼치는 혈투를 직접 확인하세요.</p>
+						</dd>
+					</dl>
+
+					<span class="currency">
+						<var><i>$17,002,122 USD</i>총상금</var>
+						<button><img src="images/btn/btn-gameView.jpg" alt="보기"></button>
+					</span>
+				</div>
+			</li>
+
+			<li>
+				<div class="inner">
+					<dl>
+						<dt>
+							<figure class="thum">
+								<img src="images/thum-game-01.jpg" alt="">
+							</figure>
+						</dt>
+						<dd>
+							<h3>The International 2016</h3>
+							<p>누가 승자의 자리를 차지할까요? 세계 최고의 팀들이  The International 에서 펼치는 혈투를 직접 확인하세요.</p>
+						</dd>
+					</dl>
+
+					<span class="currency">
+						<var><i>$17,002,122 USD</i>총상금</var>
+						<button><img src="images/btn/btn-gameView.jpg" alt="보기"></button>
+					</span>
+				</div>
+			</li>
+
+			<li>
+				<div class="inner">
+					<dl>
+						<dt>
+							<figure class="thum">
+								<img src="images/thum-game-02.jpg" alt="">
+							</figure>
+						</dt>
+						<dd>
+							<h3>The International 2016</h3>
+							<p>누가 승자의 자리를 차지할까요? 세계 최고의 팀들이  The International 에서 펼치는 혈투를 직접 확인하세요.</p>
+						</dd>
+					</dl>
+
+					<span class="currency">
+						<var><i>$17,002,122 USD</i>총상금</var>
+						<button><img src="images/btn/btn-gameView.jpg" alt="보기"></button>
+					</span>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+
+  	<button class="append" ng-click="addItem('aa')" style="background-color: gold; line-height: 30px; padding: 5px 10px;">ADD ITEM</button>
 
 	<!-- build:js scripts/vendor.js -->
 	<!-- bower:js -->
@@ -107,6 +183,7 @@
 	<script src="/bower_components/angular-route/angular-route.js"></script>
 	<script src="/bower_components/gsap/src/uncompressed/TweenMax.js"></script>
 	<script src="/bower_components/angular-animate/angular-animate.js"></script>
+	<script src="/bower_components/jqlite/jqlite.1.1.1.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
